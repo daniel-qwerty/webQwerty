@@ -1,0 +1,107 @@
+<?PHP
+
+$form = new Com_Wizard_Form();
+$form->title = "Formulario Articulos";
+
+$form->addAction("floppy-disk", "Guardar", null, "document.getElementById('saveForm').click();");
+$form->addAction("log-out", "Volver", Com_Helper_Url::getInstance()->urlBase . "/Admin/Articles");
+
+$form->addTab("Idioma por Defecto (" . $this->languages[0]->LanName . ")", "", true);
+
+$control = new Com_Wizard_Form_Control_Hidden();
+$control->name = "Language";
+$control->default = $this->Language;
+$form->add($control);
+
+$objControl = new Com_Wizard_Form_Control_Select();
+$objControl->name = "BloId";
+$objControl->label = "Categoria";
+$objControl->default = $this->BloId;
+$objControl->required = true;
+foreach ($this->Blog as $obj) {
+    $objControl->addItem($obj->BloId, $obj->BloTitle);
+}
+$form->add($objControl);
+
+$control = new Com_Wizard_Form_Control();
+$control->name = "Title";
+$control->label = "Titulo";
+$control->default = $this->Title;
+$control->length = 50;
+$control->required = true;
+$form->add($control);
+
+$control = new Com_Wizard_Form_Control();
+$control->name = "SubTitle";
+$control->label = "Sub Titulo";
+$control->default = $this->SubTitle;
+$control->length = 50;
+$control->required = FALSE;
+$form->add($control);
+
+$objControl = new Com_Wizard_Form_Control_Select();
+$objControl->name = "Author";
+$objControl->label = "Author";
+$objControl->default = $this->Author;
+$objControl->required = true;
+foreach ($this->Author as $obj) {
+    $objControl->addItem($obj->UserId, $obj->UserName);
+}
+$form->add($objControl);
+
+$control = new Com_Wizard_Form_Control_Text();
+$control->name = "SmallDescription";
+$control->label = "Descripcion Corta";
+$control->default = $this->SmallDescription;
+$control->required = true;
+$control->rows = 3;
+$control->addParameter("style ", "height:120px;");
+$form->add($control);
+
+$control = new Com_Wizard_Form_Control();
+$control->name = "Tweet";
+$control->label = "Tweet";
+$control->default = $this->Tweet;
+$control->length = 120;
+$control->required = FALSE;
+$form->add($control);
+
+$control = new Com_Wizard_Form_Control_CKEditor();
+$control->name = "LargeDescription";
+$control->label = "Contenido";
+$control->default = $this->LargeDescription;
+$form->add($control);
+
+$control = new Com_Wizard_Form_Control_Date();
+$control->name = "Date";
+$control->label = "Fecha";
+$control->default = $this->Date;
+$control->required = true;
+$form->add($control);
+
+$control = new Com_Wizard_Form_Control_File();
+$control->name = "Image";
+$control->label = "Imagen";
+$control->default = $this->Image;
+$control->required = true;
+$control->isImage = true;
+$form->add($control);
+
+$control = new Com_Wizard_Form_Control();
+$control->name = "Video";
+$control->label = "Video";
+$control->default = $this->Video;
+$control->length = 50;
+$control->required = FALSE;
+$form->add($control);
+
+$control = new Com_Wizard_Form_Control_Select();
+$control->name = "Status";
+$control->label = "Estado";
+$control->default = $this->Status;
+$control->required = true;
+$control->addItem('1', 'Habilitado');
+$control->addItem('0', 'Bloqueado');
+$form->add($control);
+
+$form->render();

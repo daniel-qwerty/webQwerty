@@ -1,0 +1,25 @@
+<?PHP
+
+$db = new Entities_How();
+$grid = new Com_Wizard_Grid();
+$grid->title = "Listado Como lo hacemos";
+$grid->setIdField("HowId");
+$grid->setLanField("HowLanId");
+$grid->setQuery($db->getListWithLanguages());
+$grid->setAlias(array("LanName" => "Idioma", "HowTitle" => "Titulo", "HowDescription" => "Descripcion", "HowStatus" => "Estado"));
+$grid->setFilters(array("HowTitle" => get('HowTitle')));
+
+$toolBar = new Com_Wizard_ToolBar();
+$toolBar->add("plus", "Nuevo", Com_Helper_Url::getInstance()->urlBase . '/Admin/How/Add');
+$toolBar->add("search", "Filtrar", null, "showHide('.filters')");
+$toolBar->add("log-out", "Volver", Com_Helper_Url::getInstance()->urlBase . '/Admin');
+$grid->setToolBar($toolBar);
+
+
+$grid->addAction("pencil", "Editar", Com_Helper_Url::getInstance()->urlBase . '/Admin/How/Edit/lan/_LANGUAGE_/id/_ID_');
+$grid->addAction("trash", "Eliminar", null, "confirm('Esta seguro de eliminar el registro?')?location.href='" . Com_Helper_Url::getInstance()->urlBase . '/Admin/How/Delete/id/_ID_' . "':'';");
+
+$grid->customField("HowStatus", array("value" => array('1' => 'Habilitado', '0' => 'Bloqueado')));
+
+
+$grid->render();

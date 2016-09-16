@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html class="blog-page">
+    <head lang="es">
+        <meta charset="UTF-8">
+        <meta property="fb:admins" content="750124831"/>
+        <meta property="fb:admins" content="771300525"/>
+        <title>Qwerty-articles</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>s
+
+        <?PHP
+        Com_Helper_Style::getInstance()
+                ->addFile("Public/bootstrap.css")
+                ->addFile("Public/bootstrap-theme.min.css")
+                ->addFile("Public/font-awesome.css")
+                ->addFile("Public/prettyPhoto.css")
+                ->addFile("Public/bootstrap-modal-carousel.min.css")
+                ->addFile("Public/main.css");
+        echo Com_Helper_Style::getInstance();
+        ?>
+    </head>
+    <body class="blog-page">
+        <div id="fb-root"></div>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+        <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=118389274854136";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="container-fluid blog-container">
+            <div class="qwerty-nav">
+                <a href="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, "page/index.html") ?>"> <img
+                        class="small-logo" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/small-logo.png"
+                        alt=""/></a>
+                 <img id="qwerty-open-menu" onclick="openMenu();return false;" class="hamburguer"
+             src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-hamburguer.png" alt=""/>
+            </div>
+            <!--            codigo-->
+            <div class="qwerty-header">
+                <h1 class="text-yellow"><i class="header-decoration"></i><?PHP echo $this->article->BitemTitle; ?></h1>
+            </div>
+            <div class="container-fluid bg-light-gray">
+                <div class="row">
+
+                        <div class="col-xs-12 back-page-image" style="background: linear-gradient(rgba(0, 145, 145, 1), rgba(49, 183, 187, 1)) repeat scroll 0% 0%;">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                                <div class="row blog-nav">
+                                    <ul class="qwerty-menu qwerty-menu-blog pull-left">
+                                        <li><a href="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, "lista/") ?>">Entradas recientes</a></li>
+                                        <li>
+                                            <a id="cat-event" href="javascript:void(0)"
+                                               onclick="show_categorias()">Categorias</a>
+
+                                            <div id="cat-dropdown" class="categorias-container">
+                                                <div class="row">
+                                                    <?PHP
+                                                    Blog_Widget_CategoriesBlog::getInstance()->setLan($this->lan)->render();
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">Qwerty lab</a></li>
+                                    </ul>
+                                    <div class="search-box pull-right">
+                                        <form action="#">
+                                            <input class="search-query" type="text"/>
+                                            <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <img class="qwerty-blog-cover  top-round"
+                                             src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->article->BitemImage; ?>"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="blog-titulos">
+                                    <h1><?PHP echo $this->article->BitemTweet; ?></h1>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="blog-descripcion myriad">
+                                    <?PHP echo $this->article->BitemLargeText; ?>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="blog-descripcion">
+                                    <div class="row">
+                                        <?php Articles_Widget_Gallery::getInstance()->setLan($this->lan)->setBlog($this->article->BitemId)->render(); ?>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div class="blog-social">
+                                    <!-- AddToAny BEGIN -->
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+
+                                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style"
+                                                 data-a2a-url="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, "articles") . "/", $item->BitemUrl; ?>"
+                                                 data-a2a-title="<?php echo $item->BitemTitle; ?>">
+                                                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                                <a class="a2a_button_facebook"></a>
+                                                <a class="a2a_button_twitter"></a>
+                                                <a class="a2a_button_whatsapp"></a>
+                                                <a class="a2a_button_linkedin"></a>
+                                            </div>
+                                            <script>
+                                                var a2a_config = a2a_config || {};
+                                                a2a_config.num_services = 4;
+                                                a2a_config.color_main = "undefined";
+                                                a2a_config.color_border = "undefined";
+                                                a2a_config.color_link_text = "undefined";
+                                                a2a_config.color_link_text_hover = "undefined";
+                                                a2a_config.color_bg = "FFFFFF";
+                                                a2a_config.color_arrow = "undefined";
+                                                a2a_config.color_arrow_hover = "undefined";
+                                            </script>
+                                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                            <!-- AddToAny END -->
+
+                                            <div class="blog-likes">
+                                                <a href="#" class="go-like"><img
+                                                        src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-like.png"
+                                                        alt="like"/></a>
+
+                                                <div class="blog-likes-like">10</div>
+                                                <div class="blog-likes-dislike">5</div>
+                                                <a href="#" class="go-dislike"><img
+                                                        src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-dislike.png"
+                                                        alt="dislike"/></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="blog-autor">
+
+                                                <img class="img-responcive img-circle"
+                                                     src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->user->UserImage; ?>"
+                                                     alt=""/>
+                                                <br/>
+                                                <span class="myriad"><?PHP echo $this->user->UserName; ?></span>
+                                            </div>
+                                            <div class="date">
+                                                05/22/2016
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="blog-comments">
+                                    <div class="fb-comments"
+                                         data-href="<?php Com_Helper_Url::getInstance()->urlBase . '/' . get('REQUEST_URI'); ?>"
+                                         data-width="100%"
+                                         data-numposts="5"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="mas-info">Te puede interesar:</h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <?PHP Articles_Widget_Relation::getInstance()->setLan($this->lan)->setBlog($this->blog->BloId)->setLimit(3)->render(); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="qwerty-header-container">
+                <div class="qwerty-header  qwerty-header-stack qwerty-header-contact">
+                    <h1 class="text-yellow"><i class="header-decoration"></i>Contacto</h1>
+                </div>
+            </div>
+            <section class="seccion seccion-contact">
+                <div class="container qwerty-offset">
+                    <div class="row">
+                        <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+                            <div class="row">
+                                <div class="col-md-6">
+
+                                    <form method="post">
+                                        <div class="form-group">
+                                            <input id="contacto-nombre" name="contacto-nombre"
+                                                   placeholder="<?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtContactNombre')->TxtDescription; ?>"
+                                                   class="form-control" type="text"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <input id="contacto-email" name="contacto-email"
+                                                   placeholder="<?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtContactEmail')->TxtDescription; ?>"
+                                                   class="form-control" type="text"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea id="contacto-mensaje" name="contacto-mensaje"
+                                                      placeholder="<?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtContactMensaje')->TxtDescription; ?>"
+                                                      class="form-control" id="" cols="30"
+                                                      rows="10"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="button"
+                                                   value="<?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtContactEnviar')->TxtDescription; ?>"
+                                                   onclick="saveContact('error message', 'enviado',<?PHP echo $this->lan->LanId; ?>);">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="col-md-6">
+                                    <div id="qwerty-map"></div>
+                                    <div class="row visible-xs visible-sm hidden-md margin-bottom" style="margin-bottom: 20px">
+                                        <div class="col-xs-4 col-sm-2">
+                                            <div class="social-icon social-icon-fb"></div>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <div class="social-icon social-icon-li"></div>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <div class="social-icon social-icon-tw"></div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-2">
+                                            <div class="social-icon social-icon-yt"></div>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-2">
+                                            <div class="social-icon social-icon-in"></div>
+                                        </div>
+                                    </div>
+                                    <div class="row contacto-data" style="margin-bottom: 15px">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-phone text-blue"></i>
+                                        </div>
+                                        <div class="col-md-11 col-xs-10">
+                                            <p class="myriad text-white"><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtTelefono')->TxtDescription; ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="row contacto-data" style="margin-bottom: 15px">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-envelope-o  text-blue"></i>
+                                        </div>
+                                        <div class="col-md-11 col-xs-10">
+                                            <p class="myriad text-white"><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtEmail')->TxtDescription; ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="row contacto-data" style="margin-bottom: 15px">
+                                        <div class="col-md-1 col-xs-2">
+                                            <i class="fa fa-map-marker text-blue"></i>
+                                        </div>
+                                        <div class="col-md-11 col-xs-10">
+                                            <p class="myriad text-white"><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtDireccion')->TxtDescription; ?></p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix margen"></div>
+                                    <div class="row hidden-sm visible-md visible-lg">
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="<?PHP echo Links_Helper_Link::getInstance()->get('linkFacebook')->LinUrl; ?>"
+                                               target="_blank">
+                                                <div class="social-icon social-icon-fb"></div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="<?PHP echo Links_Helper_Link::getInstance()->get('linkLinkedin')->LinUrl; ?>"
+                                               target="_blank">
+                                                <div class="social-icon social-icon-li"></div>
+                                            </a>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="<?PHP echo Links_Helper_Link::getInstance()->get('linkTwitter')->LinUrl; ?>"
+                                               target="_blank">
+                                                <div class="social-icon social-icon-tw"></div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="<?PHP echo Links_Helper_Link::getInstance()->get('linkYoutube')->LinUrl; ?>"
+                                               target="_blank">
+                                                <div class="social-icon social-icon-yt"></div>
+                                            </a>
+                                        </div>
+                                        <div class="col-xs-4 col-sm-2">
+                                            <a href="<?PHP echo Links_Helper_Link::getInstance()->get('linkInstagram')->LinUrl; ?>"
+                                               target="_blank">
+                                                <div class="social-icon social-icon-in"></div>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            
+        </div>
+
+
+        <?php
+        Com_Helper_Script::getInstance()->addFile("Public/lodash.js")
+                ->addFile("Public/jquery-2.2.3.min.js")
+                ->addFile("Public/jquery.prettyPhoto.js")
+                ->addFile("Public/bootstrap.min.js")
+                ->addFile("Public/main.js");
+
+
+        echo Com_Helper_Script::getInstance();
+        ?>
+        <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+
+        <script>
+                                                function show_categorias() {
+                                                    document.getElementById("cat-dropdown").classList.toggle("show");
+                                                    //        $("#cat-dropdown").show()
+                                                }
+                                                $(document).ready(function () {
+
+
+                                                    window.onclick = function (e) {
+                                                        if (!e.target.matches('#cat-event' || !e.target.matches('#cat-dropdown'))) {
+
+                                                            var dropdown = document.getElementById("cat-dropdown");
+
+                                                            var openDropdown = dropdown;
+                                                            if (openDropdown.classList.contains('show')) {
+                                                                openDropdown.classList.remove('show');
+                                                            }
+
+                                                        }
+                                                    }
+
+                                                    $("a[rel^='prettyPhoto']").prettyPhoto(
+                                                            {social_tools: "",
+                                                                show_title: false,
+                                                                theme: 'light_square', /* light_rounded / dark_rounded / light_square / dark_square / facebook */
+                                                                deeplinking: false}
+                                                    );
+
+                                                    starMapContactos("<?= Com_Helper_Url::getInstance()->getImage(); ?>");
+                                                });
+        </script>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+

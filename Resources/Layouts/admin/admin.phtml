@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title><?PHP echo APP_TITLE; ?></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="robots" content="none">
+        <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">  
+
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+
+
+        <?PHP
+        Com_Helper_Style::getInstance()->addFile("Admin/LTE/bootstrap.min.css")
+                ->addFile("Admin/admin.css")
+                ->addFile("Admin/LTE/AdminLTE.min.css")
+                ->addFile("Admin/LTE/skins.css")
+                ->addFile("Admin/LTE/blue.css")
+                ->addFile("Admin/LTE/morris.css")
+                ->addFile("Admin/editor.css")
+                ->addFile("Admin/font-awesome.css")
+                ->addFile("Admin/codemirror.css")
+                ->addFile("Admin/jBox.css")
+                ->addFile("Admin/LTE/jquery-jvectormap-1.2.2.css")
+                ->addFile("Admin/LTE/datepicker3.css")
+                ->addFile("Admin/LTE/daterangepicker-bs3.css")
+                ->addFile("Admin/LTE/bootstrap3-wysihtml5.min.css");
+
+        Com_Helper_Script::getInstance()->addFile("Admin/jquery.min.js")
+                ->addFile("Admin/LTE/jquery-ui.js")
+                ->addFile("Admin/ckeditor/ckeditor.js")
+                ->addFile("Admin/LTE/jquery.sparkline.min.js")
+                ->addFile("Admin/LTE/jquery-jvectormap.min.js")
+                ->addFile("Admin/LTE/jquery-jvectormap-world-mill-en.js")
+                ->addFile("Admin/LTE/jquery.knob.js")
+                ->addFile("Admin/LTE/morris.min.js")
+                ->addFile("Admin/LTE/app.min.js")
+                ->addFile("Admin/admin.js")
+                ->addFile("Admin/LTE/bootstrap.min.js")
+                ->addFile("Admin/LTE/daterangepicker.js")
+                ->addFile("Admin/LTE/bootstrap-datepicker.js")
+                ->addFile("Admin/LTE/bootstrap3-wysihtml5.all.min.js")
+                ->addFile("Admin/LTE/jquery.slimscroll.min.js")
+                ->addFile("Admin/LTE/fastclick.min.js")
+
+        ;
+
+        echo Com_Helper_Style::getInstance();
+        ?>
+    </head>
+    <body class="hold-transition skin-blue sidebar-mini">
+        <div class="wrapper">
+
+            <header class="main-header">
+                <!-- Logo -->
+                <a href="index2.html" class="logo">
+                    <!-- mini logo for sidebar mini 50x50 pixels -->
+                    <span class="logo-mini"><b>Q</b></span>
+                    <!-- logo for regular state and mobile devices -->
+                    <span class="logo-lg"><?PHP echo APP_TITLE; ?></span>
+                </a>
+                <!-- Header Navbar: style can be found in header.less -->
+                <nav class="navbar navbar-static-top" role="navigation">
+                    <!-- Sidebar toggle button-->
+                    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                        <span class="sr-only">Toggle navigation</span>
+                    </a>
+                    <div class="navbar-custom-menu">
+                        <ul class="nav navbar-nav">
+                            <!-- Messages: style can be found in dropdown.less-->
+                            <li class="dropdown messages-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-envelope-o"></i>
+                                    <span class="label label-success">4</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 4 messages</li>
+                                    <li>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <li><!-- start message -->
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <img src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <h4>
+                                                        Support Team
+                                                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                                    </h4>
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li><!-- end message -->
+                                            <li>
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <h4>
+                                                        AdminLTE Design Team
+                                                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
+                                                    </h4>
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <h4>
+                                                        Developers
+                                                        <small><i class="fa fa-clock-o"></i> Today</small>
+                                                    </h4>
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <img src="dist/img/user3-128x128.jpg" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <h4>
+                                                        Sales Department
+                                                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
+                                                    </h4>
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <div class="pull-left">
+                                                        <img src="dist/img/user4-128x128.jpg" class="img-circle" alt="User Image">
+                                                    </div>
+                                                    <h4>
+                                                        Reviewers
+                                                        <small><i class="fa fa-clock-o"></i> 2 days</small>
+                                                    </h4>
+                                                    <p>Why not buy a new awesome theme?</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">See All Messages</a></li>
+                                </ul>
+                            </li>
+                            <!-- Notifications: style can be found in dropdown.less -->
+                            <li class="dropdown notifications-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-bell-o"></i>
+                                    <span class="label label-warning">10</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 10 notifications</li>
+                                    <li>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-users text-red"></i> 5 new members joined
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-shopping-cart text-green"></i> 25 sales made
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <i class="fa fa-user text-red"></i> You changed your username
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="footer"><a href="#">View all</a></li>
+                                </ul>
+                            </li>
+                            <!-- Tasks: style can be found in dropdown.less -->
+                            <li class="dropdown tasks-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-flag-o"></i>
+                                    <span class="label label-danger">9</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li class="header">You have 9 tasks</li>
+                                    <li>
+                                        <!-- inner menu: contains the actual data -->
+                                        <ul class="menu">
+                                            <li><!-- Task item -->
+                                                <a href="#">
+                                                    <h3>
+                                                        Design some buttons
+                                                        <small class="pull-right">20%</small>
+                                                    </h3>
+                                                    <div class="progress xs">
+                                                        <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">20% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li><!-- end task item -->
+                                            <li><!-- Task item -->
+                                                <a href="#">
+                                                    <h3>
+                                                        Create a nice theme
+                                                        <small class="pull-right">40%</small>
+                                                    </h3>
+                                                    <div class="progress xs">
+                                                        <div class="progress-bar progress-bar-green" style="width: 40%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">40% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li><!-- end task item -->
+                                            <li><!-- Task item -->
+                                                <a href="#">
+                                                    <h3>
+                                                        Some task I need to do
+                                                        <small class="pull-right">60%</small>
+                                                    </h3>
+                                                    <div class="progress xs">
+                                                        <div class="progress-bar progress-bar-red" style="width: 60%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">60% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li><!-- end task item -->
+                                            <li><!-- Task item -->
+                                                <a href="#">
+                                                    <h3>
+                                                        Make beautiful transitions
+                                                        <small class="pull-right">80%</small>
+                                                    </h3>
+                                                    <div class="progress xs">
+                                                        <div class="progress-bar progress-bar-yellow" style="width: 80%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
+                                                            <span class="sr-only">80% Complete</span>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li><!-- end task item -->
+                                        </ul>
+                                    </li>
+                                    <li class="footer">
+                                        <a href="#">View all tasks</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!-- User Account: style can be found in dropdown.less -->
+                            <li class="dropdown user user-menu">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                    <img src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?php echo get('userPhoto'); ?>" class="user-image" alt="User Image">
+                                    <span class="hidden-xs"><?php echo get('userFullName'); ?></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <!-- User image -->
+                                    <li class="user-header">
+                                        <img src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?php echo get('userPhoto'); ?>" class="img-circle" alt="User Image">
+                                        <p>
+                                            <?php echo get('userFullName'); ?>
+                                            <small>Member since Nov. 2012</small>
+                                        </p>
+                                    </li>
+                                    <!-- Menu Body -->
+                                    <li class="user-body">
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Followers</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Sales</a>
+                                        </div>
+                                        <div class="col-xs-4 text-center">
+                                            <a href="#">Friends</a>
+                                        </div>
+                                    </li>
+                                    <!-- Menu Footer-->
+                                    <li class="user-footer">
+                                        <div class="pull-left">
+                                            <a href="<?PHP echo Com_Helper_Url::getInstance()->urlBase; ?>/Admin/Admin/Account" class="btn btn-default btn-flat">Perfil</a>
+                                        </div>
+                                        <div class="pull-right">
+                                            <a href="<?PHP echo Com_Helper_Url::getInstance()->urlBase; ?>/Admin/Admin/Close" class="btn btn-default btn-flat">Salir</a>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+
+                        </ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- Left side column. contains the logo and sidebar -->
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?php echo get('userPhoto'); ?>" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            <p><?php echo get('userFullName'); ?></p>
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- search form -->
+
+                    <!-- /.search form -->
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu">
+                        <li class="header">MAIN NAVIGATION</li>
+                        <li>
+                            <?php echo '<a href="' . Com_Helper_Url::getInstance()->urlBase . '/Admin/Statistics">'; ?> 
+                            <i class="ion-stats-bars"></i> <span>Estadisticas</span> </a>
+                        </li>
+                        <?PHP echo Com_Helper_Menu::getInstance(); ?>
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+
+            <!-- Content Wrapper. Contains page content -->
+            <div class="content-wrapper">
+                <!-- Content Header (Page header) -->
+                <section class="content-header">
+                    <h1>
+                        Dashboard
+                        <small>Control panel</small>
+                    </h1>
+                    <ol class="breadcrumb">
+                        <?php Com_Helper_BreadCrumbs::getInstance()->render(); ?>
+                    </ol>
+                </section>
+
+                <!-- Main content -->
+                <section class="content">
+                    <!-- Small boxes (Stat box) -->
+                    <div class="row">
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        <?php
+                                        $url = "https://www.facebook.com/qwertybolivia/";
+                                        $rest_url = "http://api.facebook.com/restserver.php?format=json&method=links.getStats&urls=" . urlencode($url);
+                                        $json = json_decode(file_get_contents($rest_url), true);
+                                        echo $json[0]['like_count'];
+                                        ?>
+                                    </h3>
+                                    <p>Seguidores Facebook</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion-social-facebook"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>
+                                        <?php
+//                                        $raw = file_get_contents('https://www.instagram.com/qwertybolivia'); //replace with user 
+//
+//
+//                                        preg_match('/\"followed_by\"\:\{\"count\"\:([0-9]+)/', $raw, $m);
+//                                        echo (intval($m[1]));
+                                        echo '0';
+                                        ?>
+                                        <sup style="font-size: 20px"></sup></h3>
+                                    <p>Seguidores Instagram</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion-social-instagram-outline"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>
+                                        <?php
+                                        $intTotalVisitas = 0;
+                                        foreach ($this->Statistics as $intIndex => $obj) {
+                                            $intTotalVisitas+=1;
+                                        }
+                                        echo $intTotalVisitas;
+                                        ?>
+                                    </h3>
+                                    <p>Visitas ultimo mes</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion-ios-people"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>65</h3>
+                                    <p>Unique Visitors</p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div><!-- ./col -->
+
+                    </div><!-- /.row -->
+                    <!-- Main row -->
+
+
+                    <div class="row">
+                        <!-- Left col -->
+                        <section class="col-lg-12">
+                            <?PHP
+                            Com_Helper_Title::getInstance()->render();
+                            Com_Wizard_Messages::getInstance()->render();
+                            $this->getContent();
+                            ?>
+                        </section>
+                        <section class="col-lg-7 connectedSortable">
+                            <!-- quick email widget -->
+                            <div class="box box-info">
+                                <div class="box-header">
+                                    <i class="fa fa-envelope"></i>
+                                    <h3 class="box-title">Quick Email</h3>
+                                    <!-- tools box -->
+                                    <div class="pull-right box-tools">
+                                        <button class="btn btn-info btn-sm" data-widget="remove" data-toggle="tooltip" title="Remove"><i class="fa fa-times"></i></button>
+                                    </div><!-- /. tools -->
+                                </div>
+                                <div class="box-body">
+                                    <form action="#" method="post">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" name="emailto" placeholder="Email to:">
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" name="subject" placeholder="Subject">
+                                        </div>
+                                        <div>
+                                            <textarea class="textarea" placeholder="Message" style="width: 100%; height: 125px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="box-footer clearfix">
+                                    <button class="pull-right btn btn-default" id="sendEmail">Send <i class="fa fa-arrow-circle-right"></i></button>
+                                </div>
+                            </div>
+
+                        </section><!-- /.Left col -->
+                        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+                        <section class="col-lg-5 connectedSortable">
+
+
+
+                        </section><!-- right col -->
+                    </div><!-- /.row (main row) -->
+
+                </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
+            <footer class="main-footer">
+                <div class="pull-right hidden-xs">
+                    <b>Version</b> 2.3.0
+                </div>
+                <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+            </footer>
+
+            <div class="control-sidebar-bg"></div>
+        </div><!-- ./wrapper -->
+
+
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+        <!-- daterangepicker -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
+
+        <?PHP
+        echo Com_Helper_Script::getInstance();
+        ?>
+        <script type="text/javascript">
+        urlBase = '<?PHP echo Com_Helper_Url::getInstance()->urlBase; ?>';
+        </script>
+    </body>
+
+
+
+</html>

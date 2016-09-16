@@ -1,0 +1,62 @@
+<?PHP
+
+$form = new Com_Wizard_Form();
+$form->title = "Formulario Textos de pagina";
+
+$form->addAction("floppy-disk", "Guardar", null, "document.getElementById('saveForm').click();");
+$form->addAction("log-out", "Volver", Com_Helper_Url::getInstance()->urlBase . "/Admin/Texts");
+
+foreach ($this->languages as $language) {
+    $active = false;
+    if ($this->Language == $language->LanId) {
+        $active = true;
+    }
+    $form->addTab($language->LanName, Com_Helper_Url::getInstance()->urlBase . "/Admin/Texts/Edit/lan/" . $language->LanId . "/id/" . $this->Id, $active);
+}
+
+$control = new Com_Wizard_Form_Control_Hidden();
+$control->name = "Language";
+$control->default = $this->Language;
+$form->add($control);
+
+
+$objControl = new Com_Wizard_Form_Control_Select();
+$objControl->name = "ProId";
+$objControl->label = "Proyecto";
+$objControl->default = $this->ProId;
+$objControl->required = true;
+foreach ($this->Project as $obj) {
+    $objControl->addItem($obj->ProId, $obj->ProTitle);
+}
+$form->add($objControl);
+
+$objControl = new Com_Wizard_Form_Control_Select();
+$objControl->name = "CliId";
+$objControl->label = "Cliente";
+$objControl->default = $this->CliId;
+$objControl->required = true;
+foreach ($this->Client as $obj) {
+    $objControl->addItem($obj->CusId, $obj->CusName);
+}
+$form->add($objControl);
+
+$objControl = new Com_Wizard_Form_Control_Select();
+$objControl->name = "SerId";
+$objControl->label = "Servicio";
+$objControl->default = $this->SerId;
+$objControl->required = true;
+foreach ($this->Service as $obj) {
+    $objControl->addItem($obj->SerId, $obj->SerTitle);
+}
+$form->add($objControl);
+
+$control = new Com_Wizard_Form_Control_Select();
+$control->name = "Status";
+$control->label = "Estado";
+$control->default = $this->Status;
+$control->required = true;
+$control->addItem('1', 'Leido');
+$control->addItem('0', 'No Leido');
+$form->add($control);
+
+$form->render();

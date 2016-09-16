@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Page Title -->
+    <title><?PHP echo $this->page->PagName; ?></title>
+
+    <meta name="description" content="<?PHP echo $this->page->PagDescription; ?>">
+    <meta name="keywords" content="<?PHP echo $this->page->PagMetaTags; ?>">
+    <meta name="author" content="Qwerty Bolivia">
+    <meta name="robots" content="index,follow">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="<?PHP echo $this->page->PagName; ?>">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Latest compiled and minified CSS -->
+
+    <meta property="og:url"
+          content="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, 'page/' . $this->page->PagUrl); ?>">
+    <meta property="og:title" content="<?PHP echo $this->page->PagName; ?>">
+    <meta property="og:site_name" content="<?PHP echo $this->translator->pageName; ?>">
+    <meta property="og:description" content="<?PHP echo $this->page->PagDescription; ?>">
+    <meta property="og:image"
+          content="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->page->PagImage; ?>">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
+    <?PHP
+    Com_Helper_Style::getInstance()->addFile("Public/bootstrap.css")
+        ->addFile("Public/bootstrap-theme.min.css")
+        ->addFile("Public/font-awesome.css")
+        ->addFile("Public/bootstrap-modal-carousel.min.css")
+        ->addFile("Public/main.css")
+        ->addFile("Public/sweetalert.css")
+        ->addFile("Public/prettyPhoto.css")
+        ->addFile("Public/content_slider_style.css");
+
+    echo Com_Helper_Style::getInstance();
+
+    Com_Helper_Script::getInstance()
+        ->addFile("Public/jquery-2.2.3.min.js")
+        ->addFile("Public/bootstrap.min.js")
+        ->addFile("Public/sweetalert.min.js")
+        ->addFile("Public/main.js")
+        ->addFile("Public/bootstrap-modal-carousel.min.js")
+        ->addFile("Public/jquery.content_slider.min.js")
+        ->addFile("Public/jquery.mousewheel.js")
+        ->addFile("Public/jquery.prettyPhoto.js")
+        ->addFile("Public/jquery.animate-colors.js")
+        ->addFile("Public/additional_content.js")
+        ->addFile("Public/anims/logo_animado.js");
+    ?>
+
+    <script>
+        var canvas, stage, exportRoot;
+        function init() {
+            // --- write your JS code here ---
+
+            canvas = document.getElementById("canvas_logo");
+            exportRoot = new lib.LogoAnimado();
+
+            stage = new createjs.Stage(canvas);
+            stage.addChild(exportRoot);
+            stage.update();
+
+            createjs.Ticker.setFPS(lib.properties.fps);
+            createjs.Ticker.addEventListener("tick", stage);
+        }
+    </script>
+</head>
+<body onload="init();">
+<a href="#" class="go-up" onclick="goTo(0); return false"> <i class="fa fa-chevron-circle-up"></i></a>
+
+<section class="seccion seccion-main">
+    <div class="container qwerty-big-logo">
+        <div class="row">
+            <div class="">
+
+                <canvas id="canvas_logo" width="1200" height="354" style="margin-top:-60px; background-color:transparent;"></canvas>
+            </div>
+        </div>
+    </div>
+    <div id="qwerty-menu-container">
+        <?PHP
+        Menu_Widget_Menu::getInstance()->setLan($this->lan)->setParent(1)->render();
+        ?>
+    </div>
+</section>
+
+<div class="qwerty-nav-container">
+    <div class="qwerty-nav qwerty-nav-main">
+        <a onclick="goTo(0); return false" href="#">
+            <img class="small-logo"
+                 src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/small-logo.png" alt=""/></a>
+        <img id="qwerty-open-menu" onclick="openMenu();return false;" class="hamburguer"
+             src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-hamburguer.png" alt=""/>
+    </div>
+</div>
+<div class="qwerty-header-container">
+    <div class="qwerty-header qwerty-header-stack qwerty-header-who">
+        <h1 id="who" name="who" class="text-yellow"><i
+                class="header-decoration"></i><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titleQuienesSomos')->TxtDescription; ?>
+        </h1>
+    </div>
+</div>
+<section id="seccion-who" class="seccion seccion-who">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row descripcion">
+                    <div class="col-sm-12">
+                        <p style="font-size: 16px">
+                            <?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtQuienesSomos')->TxtDescription; ?>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="row video">
+                    <div class="col-sm-12">
+                        <iframe width="100%"
+                                src="<?PHP echo Links_Helper_Link::getInstance()->get('linkVideo')->LinUrl; ?>"
+                                frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="row mas-info">
+                    <div class="col-sm-6 ">
+                        <h2><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titleMision')->TxtDescription; ?></h2>
+
+                        <p><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtMision')->TxtDescription; ?></p>
+                    </div>
+                    <div class="col-sm-6 vision">
+                        <h2><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titleVision')->TxtDescription; ?></h2>
+
+                        <p><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'txtVision')->TxtDescription; ?></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<div class="qwerty-header-container">
+    <div class="qwerty-header qwerty-header-stack qwerty-header-services">
+        <h1 class="text-yellow"><i class="header-decoration"></i><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titleServicios')->TxtDescription; ?></h1>
+    </div>
+</div>
+<section class="seccion seccion-services">
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2 col-xs-12">
+                <div class="row servicios">
+                    <?PHP
+                    Services_Widget_Service::getInstance()->setLan($this->lan)->render();
+                    ?>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<div class="qwerty-header-container">
+    <div class="qwerty-header  qwerty-header-stack qwerty-header-us">
+        <h1 class="text-yellow"><i class="header-decoration"></i><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titleEquipo')->TxtDescription; ?></h1>
+    </div>
+</div>
+<section class="seccion seccion-us">
+
+
+    <div style="width: 915px; height: 496px;" class="content_slider_wrapper" id="slider1">
+
+
+        <?PHP
+        Team_Widget_Equipo::getInstance()->setLan($this->lan)->render();
+        ?>
+
+    </div>
+
+
+</section>
+<div class="qwerty-header-container">
+    <div class="qwerty-header qwerty-header-stack qwerty-header-blog">
+        <h1 class="text-yellow"><i class="header-decoration"></i><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titleBlog')->TxtDescription; ?></h1>
+    </div>
+</div>
+<section class="seccion seccion-blog">
+    <div class="container">
+        <div class="row content-blog">
+            <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
+                <div class="row">
+                    <?PHP
+                    Blog_Widget_CategoriesHome::getInstance()->setLan($this->lan)->setLimit(4)->render();
+                    ?>
+                </div>
+                <br/>
+
+                <div class="row">
+                    <?PHP
+                    Articles_Widget_ListBlog::getInstance()->setLan($this->lan)->setLimit(6)->render();
+                    ?>
+                </div>
+                <div class="row text-center"><a class="qwerty-red-buton"
+                                                href="<?= Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, "lista/") ?>"
+                                                target="_self"><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titleVermas')->TxtDescription; ?></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="qwerty-header-container hidden">
+    <div class="qwerty-header qwerty-header-stack qwerty-header-work">
+        <h1 class="text-yellow"><i class="header-decoration"></i>Portafolio</h1>
+    </div>
+</div>
+<section class="seccion seccion-work hidden">
+    <p class="content-title">Portafolio</p>
+</section>
+
+<?PHP
+//FORMULARIO DE CONTACTO
+Contact_Widget_Form::getInstance()->setLan($this->lan)->render(); ?>
+<!-- menu qwerty-->
+
+<div class="qwerty-menu-fullscreen">
+    <a href="#" onclick="closeMenu(); return false;" class="qwerty-menu-close"><i class="fa fa-close"></i></a>
+
+    <div class="qwerty-menu-fullscreen-wrapper">
+        <nav id="fullscreen-navigation" class="fullscreen-menu">
+            <ul id="menu-menu" class="qwerty-menu-fullscreen-ul">
+                <?PHP
+                Menu_Widget_Responsive::getInstance()->setLan($this->lan)->setParent(1)->render();
+                ?>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-body">
+            <i onclick="hideModal();return false;" class="fa fa-close modal-close"></i>
+
+            <div id="carousel-servicios" class="carousel carousel-servicios slide" data-ride="carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
+                    <?PHP
+                    Services_Widget_ServiceIndicators::getInstance()->setLan($this->lan)->render();
+                    ?>
+                </ol>
+
+                <!-- Wrapper for slides -->
+                <div class="carousel-inner" role="listbox">
+                    <?PHP
+                    Services_Widget_ServiceCarousel::getInstance()->setLan($this->lan)->render();
+                    ?>
+                </div>
+
+
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-servicios" role="button" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="right carousel-control" href="#carousel-servicios" role="button" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+<?php echo Com_Helper_Script::getInstance(); //INsetarmos los Scripts ?>
+<script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+<script>
+    //Url Imagenes del mapa
+    starMapContactos("<?= Com_Helper_Url::getInstance()->getImage(); ?>");
+
+    $(document).ready(function () {
+        goTo(0);
+        header_who = $(".qwerty-header-who").position().top;
+        header_services = $(".qwerty-header-services").position().top;
+        header_us = $(".qwerty-header-us").position().top;
+        header_blog = $(".qwerty-header-blog").position().top;
+        header_work = $(".qwerty-header-work").position().top;
+        header_contact = $(".qwerty-header-contact").position().top;
+        var modal = document.getElementById('myModal');
+        <?PHP
+            $list = Services_Model_Service::getInstance()->getServices($this->lan->LanId);
+            $sw = 0;
+            foreach ($list as $val => $item) {
+                $sw++;
+                echo ' $("#' . $item->SerAlias . '").click(function () {$("#carousel-servicios").carousel(' . $val . '); modal.style.display = "block";});';
+            }
+        ?>
+    });
+</script>
+
+<script type="text/javascript">
+    (function ($) {
+        var image_array = new Array();
+        image_array = [
+            <?PHP
+            $listTeam = Team_Model_Team::getInstance()->getList($this->lan->LanId);
+            foreach ($listTeam as $val => $item) {
+                $sw1 = Com_Helper_Url::getInstance()->getUploads() . "/Image/" . $item->TeamImage;
+                echo "{image: '{$sw1}', link_url: '{$sw1}', link_rel: 'prettyPhoto'},";
+            }
+            ?>
+        ];
+        $('#slider1').content_slider({// bind plugin to div id="slider1"
+            map: image_array, // pointer to the image map
+            max_shown_items: 7, // number of visible circles
+            hv_switch: 0, // 0 = horizontal slider, 1 = vertical
+            active_item: 0, // layer that will be shown at start, 0=first, 1=second...
+            wrapper_text_max_height: 450, // height of widget, displayed in pixels
+            middle_click: 1, // when main circle is clicked: 1 = slider will go to the previous layer/circle, 2 = to the next
+            under_600_max_height: 1200, // if resolution is below 600 px, set max height of content
+            border_radius: -1, // -1 = circle, 0 and other = radius
+            automatic_height_resize: 1,
+            border_on_off: 0,
+            allow_shadow: 0,
+            plugin_url: "<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/",
+            border_on_off: 1
+        });
+    })(jQuery);
+</script>
+
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-79171147-1', 'auto');
+    ga('send', 'pageview');
+
+</script>
+
+
+</html>

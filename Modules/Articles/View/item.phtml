@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        
+        <meta property="fb:admins" content="750124831"/>
+        <meta property="fb:admins" content="771300525"/>
+
+        <!-- Page Title -->
+        <title><?PHP echo $this->article->BitemTitle; ?></title>
+        
+        
+
+        <meta name="description" content=" <?PHP echo $this->article->BitemSmallText; ?>">
+        <meta name="author" content="Qwerty Bolivia">
+        <meta name="robots" content="index,follow">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="<?PHP echo $this->article->BitemTitle; ?>">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <!-- Latest compiled and minified CSS -->
+
+        <meta property="og:url"
+              content="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, 'articles/' . $this->article->BitemUrl); ?>">
+        <meta property="og:title" content="<?PHP echo $this->article->BitemTitle; ?>">
+        <meta property="og:site_name" content="Qwerty - GO Digital">
+        <meta property="og:description" content="<?PHP echo $this->article->BitemSmallText; ?>">
+        <meta property="og:image"
+              content="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->article->BitemImage; ?>">
+        <meta property="og:image:type" content="image/png">
+        <meta property="og:type" content="website">
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css"/>
+
+        <?PHP
+        Com_Helper_Style::getInstance()->addFile("Public/bootstrap.css")
+                ->addFile("Public/bootstrap-theme.min.css")
+                ->addFile("Public/font-awesome.css")
+                ->addFile("Public/bootstrap-modal-carousel.min.css")
+                ->addFile("Public/main.css")
+                ->addFile("Public/sweetalert.css")
+                ->addFile("Public/prettyPhoto.css")
+                ->addFile("Public/content_slider_style.css");
+
+        echo Com_Helper_Style::getInstance();
+
+        Com_Helper_Script::getInstance()
+                ->addFile("Public/jquery-2.2.3.min.js")
+                ->addFile("Public/bootstrap.min.js")
+                ->addFile("Public/sweetalert.min.js")
+                ->addFile("Public/main.js")
+                ->addFile("Public/bootstrap-modal-carousel.min.js")
+                ->addFile("Public/jquery.content_slider.min.js")
+                ->addFile("Public/jquery.mousewheel.js")
+                ->addFile("Public/jquery.prettyPhoto.js")
+                ->addFile("Public/jquery.animate-colors.js")
+                ->addFile("Public/additional_content.js");
+        ?>
+    </head>
+        <div id="fb-root"></div>
+        <body class="blog-page">
+            <script>(function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id))
+                    return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.6&appId=118389274854136";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));</script>
+
+        <div class="container-fluid blog-container">
+            <div class="qwerty-nav">
+                <a href="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, "page/index.html") ?>"> <img
+                        class="small-logo" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/small-logo.png"
+                        alt=""/></a>
+                 <img id="qwerty-open-menu" onclick="openMenu();return false;" class="hamburguer"
+             src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-hamburguer.png" alt=""/>
+            </div>
+            <!--            codigo-->
+            <div class="qwerty-header">
+                <h1 class="text-yellow"><i class="header-decoration"></i><?PHP echo $this->article->BitemTitle; ?></h1>
+            </div>
+            <div class="container-fluid bg-light-gray">
+                <div class="row">
+
+                        <div class="col-xs-12 back-page-image" style="background: linear-gradient(rgba(0, 145, 145, 1), rgba(49, 183, 187, 1)) repeat scroll 0% 0%;">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                                <div class="row blog-nav">
+                                    <ul class="qwerty-menu qwerty-menu-blog pull-left">
+                                        <li><a href="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, "lista/") ?>">Entradas recientes</a></li>
+                                        <li>
+                                            <a id="cat-event" href="javascript:void(0)"
+                                               onclick="show_categorias()">Categorias</a>
+
+                                            <div id="cat-dropdown" class="categorias-container">
+                                                <div class="row">
+                                                    <?PHP
+                                                    Blog_Widget_CategoriesBlog::getInstance()->setLan($this->lan)->render();
+                                                    ?>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li><a href="#">Qwerty lab</a></li>
+                                    </ul>
+                                    <div class="search-box pull-righ hidden">
+                                        <form action="#">
+                                            <input class="search-query" type="text"/>
+                                            <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <img class="qwerty-blog-cover  top-round"
+                                             src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->article->BitemImage; ?>"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                        <div class="row">
+                            <div class="col-sm-12 ">
+                                <div class="blog-titulos">
+                                    <h1><?PHP echo $this->article->BitemTweet; ?></h1>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="blog-descripcion myriad">
+                                    <?PHP echo $this->article->BitemLargeText; ?>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="blog-descripcion">
+                                    <div class="row">
+                                        <?php Articles_Widget_Gallery::getInstance()->setLan($this->lan)->setBlog($this->article->BitemId)->render(); ?>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                        <div class="row">
+
+                            <div class="col-sm-12">
+                                <div class="blog-social">
+                                    <!-- AddToAny BEGIN -->
+
+                                    <div class="row">
+                                        <div class="col-sm-6">
+
+                                            <div class="a2a_kit a2a_kit_size_32 a2a_default_style"
+                                                 data-a2a-url="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, 'articles/' . $this->article->BitemUrl); ?>"
+                                                 data-a2a-title="<?PHP echo $this->article->BitemTitle; ?>">
+                                                <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                                <a class="a2a_button_facebook"></a>
+                                                <a class="a2a_button_twitter"></a>
+                                                <a class="a2a_button_whatsapp"></a>
+                                                <a class="a2a_button_linkedin"></a>
+                                            </div>
+                                            <script>
+                                                var a2a_config = a2a_config || {};
+                                                a2a_config.num_services = 4;
+                                                a2a_config.color_main = "undefined";
+                                                a2a_config.color_border = "undefined";
+                                                a2a_config.color_link_text = "undefined";
+                                                a2a_config.color_link_text_hover = "undefined";
+                                                a2a_config.color_bg = "FFFFFF";
+                                                a2a_config.color_arrow = "undefined";
+                                                a2a_config.color_arrow_hover = "undefined";
+                                            </script>
+                                            <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                            <!-- AddToAny END -->
+
+                                            <div class="blog-likes">
+                                                <a href="#" class="go-like"><img
+                                                        src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-like.png"
+                                                        alt="like"/></a>
+
+                                                <div class="blog-likes-like">10</div>
+                                                <div class="blog-likes-dislike">5</div>
+                                                <a href="#" class="go-dislike"><img
+                                                        src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-dislike.png"
+                                                        alt="dislike"/></a>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="blog-autor">
+
+                                                <img class="img-responcive img-circle"
+                                                     src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->user->UserImage; ?>"
+                                                     alt=""/>
+                                                <br/>
+                                                <span class="myriad"><?PHP echo $this->user->UserName; ?></span>
+                                            </div>
+                                            <div class="date">
+                                                05/22/2016
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="blog-comments">
+                                    <div class="fb-comments"
+                                         data-href="<?php Com_Helper_Url::getInstance()->urlBase . '/' . get('REQUEST_URI'); ?>"
+                                         data-width="100%"
+                                         data-numposts="5"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h2 class="mas-info">Te puede interesar:</h2>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <?PHP Articles_Widget_Relation::getInstance()->setLan($this->lan)->setBlog($this->blog->BloId)->setLimit(3)->render(); ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <?PHP
+            //FORMULARIO DE CONTACTO
+            Contact_Widget_Form::getInstance()->setLan($this->lan)->render(); ?>
+
+            <div class="qwerty-menu-fullscreen">
+                <a href="#" onclick="closeMenu(); return false;" class="qwerty-menu-close"><i class="fa fa-close"></i></a>
+
+                <div class="qwerty-menu-fullscreen-wrapper">
+                    <nav id="fullscreen-navigation" class="fullscreen-menu">
+                        <ul id="menu-menu" class="qwerty-menu-fullscreen-ul">
+                           <?PHP
+                                               Menu_Widget_Responsive::getInstance()->setLan($this->lan)->setParent(1)->render();
+                            ?>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+        </body>
+    
+  <?php echo Com_Helper_Script::getInstance(); //INsetarmos los Scripts ?>
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+    <script>
+        //Url Imagenes del mapa
+        starMapContactos("<?= Com_Helper_Url::getInstance()->getImage(); ?>");
+
+        $(document).ready(function () {
+        goTo(0);
+        header_who = $(".qwerty-header-who").position().top;
+        header_services = $(".qwerty-header-services").position().top;
+        header_us = $(".qwerty-header-us").position().top;
+        header_blog = $(".qwerty-header-blog").position().top;
+        header_work = $(".qwerty-header-work").position().top;
+        header_contact = $(".qwerty-header-contact").position().top;
+        });
+    </script>
+    
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-79171147-1', 'auto');
+        ga('send', 'pageview', location.pathname);
+
+    </script>      
+        
+</html>
+
+
+
+
+
+
+
+
+
+

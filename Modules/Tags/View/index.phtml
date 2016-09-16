@@ -1,0 +1,24 @@
+<?PHP
+
+$db = new Entities_Tags();
+$grid = new Com_Wizard_Grid();
+
+$grid->title = "Tags";
+$grid->setIdField("TagId");
+$grid->setLanField("TagLanId");
+$grid->setQuery($db->getListWithLanguages());
+$grid->setAlias(array("LanName" => "Idioma", "TagName" => "Titulo", "TagStatus" => "Estado"));
+$grid->setFilters(array("TagName" => get('TagName')));
+
+$toolBar = new Com_Wizard_ToolBar();
+$toolBar->add("plus", "Nuevo", Com_Helper_Url::getInstance()->urlBase . '/Admin/Tags/Add/');
+$toolBar->add("search", "Filtrar", null, "showHide('.filters')");
+$toolBar->add("log-out", "Volver", Com_Helper_Url::getInstance()->urlBase . '/Admin');
+$grid->setToolBar($toolBar);
+
+$grid->addAction("pencil", "Editar", Com_Helper_Url::getInstance()->urlBase . '/Admin/Tags/Edit/lan/_LANGUAGE_/id/_ID_');
+$grid->addAction("trash", "Eliminar", null, "confirm('Esta seguro de eliminar el registro?')?location.href='" . Com_Helper_Url::getInstance()->urlBase . '/Admin/Tags/Delete/id/_ID_' . "':'';");
+
+$grid->customField("TagStatus", array("value" => array('1' => 'Habilitado', '0' => 'Bloqueado')));
+
+$grid->render();

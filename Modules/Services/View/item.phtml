@@ -1,0 +1,220 @@
+<div class="qwerty-header">
+    <h1 class="text-yellow"><i class="header-decoration"></i> <?PHP echo $this->blog->BloTitle; ?></h1>
+</div>
+<div class="container-fluid bg-light-gray qwerty-offset">
+    <div class="row">
+        <div class="col-xs-12 back-page-image"
+             style="background: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.3)) repeat scroll 0% 0%, transparent url(<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->blog->BloHeader; ?>) repeat scroll center center / cover;">
+            <div class="row">
+                <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                    <div class="row blog-nav">
+                        <ul class="qwerty-menu qwerty-menu-blog pull-left">
+                            <li><a href="#">Entradas recientesss</a></li>
+                            <li><a href="#">Mas leidas</a></li>
+                            <li>
+                                <a id="cat-event" href="javascript:void(0)" onclick="show_categorias()">Categorias</a>
+
+                                <div id="cat-dropdown" class="categorias-container">
+                                    <div class="row">
+                                        <?PHP
+                                           Blog_Widget_categoriesBlog::getInstance()->setLan($this->lan)->render();
+                                        ?>
+                                    </div>
+                                </div>
+                            </li>
+                            <li><a href="#">Qwerty lab</a></li>
+                        </ul>
+                        <div class="search-box pull-right">
+                            <form action="#">
+                                <input class="search-query" type="text"/>
+                                <button type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="blog-social">05/20/2016</div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->blog->BloBanner; ?>" alt=""/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 ">
+                            <div class="blog-titulos">
+                                <p><?PHP echo $this->blog->BloDescription; ?></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="blog-titulos">
+                            <h1>Título Título</h1>
+
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultricies leo et dignissim
+                                rutrum. Ut quam velit, placerat ac ullamcorper ut, efficitur a urna.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="blog-descripcion myriad">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultricies leo et dignissim
+                            rutrum. Ut quam velit, placerat ac ullamcorper ut, efficitur a urna. Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit. In ultricies leo et dignissim rutrum. Ut quam velit,
+                            placerat ac ullamcorper ut, efficitur a urna.
+                            Lorem ipsum dolor sit amet,<p>algo</p> consectetur adipiscing elit. In ultricies leo et
+                            dignissim
+                            rutrum. Ut quam velit, placerat ac ullamcorper ut, efficitur a urna. Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit. In ultricies leo et dignissim rutrum. Ut quam velit,
+                            placerat ac ullamcorper ut, efficitur a urna.
+                            <br/>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ultricies leo et dignissim
+                            rutrum. Ut quam velit, placerat ac ullamcorper ut, efficitur a urna. Lorem ipsum dolor sit
+                            amet, consectetur adipiscing elit. In ultricies leo et dignissim rutrum. Ut quam velit,
+                            placerat ac ullamcorper ut, efficitur a urna.
+                            Lorem <b><i>ipsum dolor sit amet, consectetur adipiscing elit. In ultricies leo et dignissim
+                            rutrum. Ut quam velit, placerat ac ullamcorper ut, efficitur a urna. Lorem ipsum dolor sit
+                            amet, </i></b>consectetur adipiscing elit. In ultricies leo et dignissim rutrum. Ut quam
+                            velit,
+                            placerat ac ullamcorper ut, efficitur a urna.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-sm-12">
+                        <div class="blog-social">
+                            <!-- AddToAny BEGIN -->
+
+                            <div class="row">
+                                <div class="col-sm-6">
+
+                                    <div class="a2a_kit a2a_kit_size_32 a2a_default_style">
+                                        <a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+                                        <a class="a2a_button_facebook"></a>
+                                        <a class="a2a_button_twitter"></a>
+                                    </div>
+                                    <script>
+                                        var a2a_config = a2a_config || {};
+                                        a2a_config.num_services = 4;
+                                        a2a_config.color_main = "undefined";
+                                        a2a_config.color_border = "undefined";
+                                        a2a_config.color_link_text = "undefined";
+                                        a2a_config.color_link_text_hover = "undefined";
+                                        a2a_config.color_bg = "FFFFFF";
+                                        a2a_config.color_arrow = "undefined";
+                                        a2a_config.color_arrow_hover = "undefined";
+                                    </script>
+                                    <script async src="https://static.addtoany.com/menu/page.js"></script>
+                                    <!-- AddToAny END -->
+
+                                    <div class="blog-likes">
+                                        <a href="#"><img src="images/icon-like.png" alt="like"/></a>
+                                        <a href="#"><img src="images/icon-dislike.png" alt="dislike"/></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="blog-autor">
+                                        <span>Homer Simpson</span>
+                                        <img class="img-responcive img-circle" src="images/blog-autor.jpg"
+                                             alt=""/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="blog-comments">
+                            <div class="fb-comments" data-href="http://qwerty.com.bo/blog?art=1" data-width="100%"
+                                 data-numposts="5"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h2 class="mas-info">Te puede interesar:</h2>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 col-xs-6">
+                        <div class="blog-small-item">
+                            <a href="#">
+                                <div class="blog-small-image"
+                                     style="background-image: url(images/blog-image.jpg)"></div>
+
+                                <div class="blog-data">
+                                    <h2>TITULO</h2>
+
+                                    <p class="hidden-xs">Epígrafe epígrafe epígrafe epígrafe epígrafe epígrafe
+                                        epígrafe epígrafe</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div class="blog-small-item">
+                            <a href="#">
+                                <div class="blog-small-image"
+                                     style="background-image: url(images/blog-image.jpg)"></div>
+
+                                <div class="blog-data">
+                                    <h2>TITULO</h2>
+
+                                    <p class="hidden-xs">Epígrafe epígrafe epígrafe epígrafe epígrafe epígrafe
+                                        epígrafe epígrafe</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-xs-6">
+                        <div class="blog-small-item">
+                            <a href="#">
+                                <div class="blog-small-image"
+                                     style="background-image: url(images/blog-image.jpg)"></div>
+
+                                <div class="blog-data">
+                                    <h2>TITULO</h2>
+
+                                    <p class="hidden-xs">Epígrafe epígrafe epígrafe epígrafe epígrafe epígrafe
+                                        epígrafe epígrafe</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<script>
+
+                                                function show_categorias() {
+                                                    document.getElementById("cat-dropdown").classList.toggle("show");
+                                                }
+                                                window.onclick = function (e) {
+                                                    if (!e.target.matches('#cat-event' || !e.target.matches('#cat-dropdown'))) {
+
+                                                        var dropdown = document.getElementById("cat-dropdown");
+
+                                                        var openDropdown = dropdown;
+                                                        if (openDropdown.classList.contains('show')) {
+                                                            openDropdown.classList.remove('show');
+                                                        }
+
+                                                    }
+                                                }
+
+</script>

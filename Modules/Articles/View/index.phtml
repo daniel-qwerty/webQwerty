@@ -1,0 +1,46 @@
+<?PHP
+
+$db = new Entities_BlogItems();
+
+$idBlog = get('idBlog');
+$languages = Language_Model_Language::getInstance()->getList();
+$language = (get('lan') != "" ? get('lan') : $languages[0]->LanId);
+$entity = Blog_Model_Blog::getInstance()->get(get('idBlog'), $language);
+
+
+$articulos = count(Articles_Model_BlogItem::getInstance()->getList()) ;
+
+//print_r($articulos);
+if(get('idBlog') != ''){
+    $grid = new Com_Wizard_Grid();
+    $grid->title = "Articulos del Blog - ".$entity->BloTitle;
+    $grid->setIdField("BitemId");
+    $grid->setLanField("BitemLanId");
+    $grid->setQuery($db->getListWithLanguages()->andWhere("BitemBlogId=$idBlog"));
+    $grid->setAlias(array("LanName" => "Idioma", "BitemDate" => "Fecha", "BitemTitle" => "Titulo", "BitemUrl" => "Url", "BitemStatus" => "Estado"));
+    $grid->setFilters(array("BloTitle" => get('BloTitle')));
+}  else {
+    $grid = new Com_Wizard_Grid();
+    $grid->title = "Articulos del Blog - ".$entity->BloTitle;
+    $grid->setIdField("BitemId");
+    $grid->setLanField("BitemLanId");
+    $grid->setQuery($db->getListWithLanguages());
+    $grid->setAlias(array("LanName" => "Idioma", "BitemDate" => "Fecha", "BitemTitle" => "Titulo", "BitemUrl" => "Url", "BitemStatus" => "Estado"));
+    $grid->setFilters(array("BloTitle" => get('BloTitle')));
+}
+
+$toolBar = new Com_Wizard_ToolBar();
+$toolBar->add("plus", "Nuevo", Com_Helper_Url::getInstance()->urlBase . '/Admin/Articles/Add/?idBlog='.$idBlog);
+$toolBar->add("search", "Filtrar", null, "showHide('.filters')");
+$toolBar->add("log-out", "Volver", Com_Helper_Url::getInstance()->urlBase . '/Admin');
+
+$grid->setToolBar($toolBar);
+
+
+$grid->addAction("pencil", "Editar", Com_Helper_Url::getInstance()->urlBase . '/Admin/Articles/Edit/lan/_LANGUAGE_/id/_ID_');
+$grid->addAction("trash", "Eliminar", null, "confirm('Esta seguro de eliminar el registro?')?location.href='" . Com_Helper_Url::getInstance()->urlBase . '/Admin/Articles/Delete/id/_ID_' . "':'';");
+
+$grid->customField("BitemStatus", array("value" => array('1' => 'Habilitado', '0' => 'Bloqueado')));
+$grid->customField("BitemDate", array("dateFormat" => "d/m/Y H:i:s"));
+
+$grid->render();

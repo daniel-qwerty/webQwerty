@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title><?PHP echo $this->translator->pageTitle; ?></title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="robots" content="none">
+
+        <meta name="viewport" content="width=device-width, user-scalable=no">
+        <link rel="shortcut icon" href="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/favicon.ico" type="image/x-icon"/>
+        <link rel="icon" href="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/favicon.ico" type="image/x-icon"/>
+
+
+        <meta property="og:title" content="<?PHP echo $this->page->PagName; ?>">
+        <meta property="og:description" content="<?PHP echo $this->page->PagDescription; ?>">
+        <meta property="og:url" content="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($this->lan->LanCode, 'page/' . $this->page->PagUrl); ?>">
+        <meta property="og:image" content="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?PHP echo $this->page->PagImage; ?>">
+        <meta property="og:site_name" content="<?PHP echo $this->translator->pageTitle; ?>">
+        <meta property="og:type" content="website">
+
+        <?PHP
+        Com_Helper_Style::getInstance()->addFile("Public/font-awesome.css")
+                ->addFile("Public/bootstrap-theme.css")
+                ->addFile("Public/bootstrap-theme.min.css")
+                ->addFile("Public/bootstrap.css")
+                ->addFile("Public/fonts.css")
+                ->addFile("Public/timeline.css")
+                ->addFile("Public/form-elements.css")
+                ->addFile("Public/normalize.css")
+                ->addFile("Public/fid.css")
+                ->addFile("Public/jBox.css");
+
+        echo Com_Helper_Style::getInstance();
+
+        Com_Helper_Script::getInstance()->addFile("Public/jquery-1.11.3.min.js")
+                ->addFile("Public/bootstrap.js")
+                ->addFile("Public/bootstrap.min.js")
+                ->addFile("Public/fid.js")
+                ->addFile("Public/jquery.backstretch.min.js")
+                ->addFile("Public/scripts.js")
+                ->addFile("Public/jquery.lwtCountdown-1.0.js")
+                ->addFile("Public/jquery.jbox.min.js")
+                ->addFile("Public/npm.js");
+
+        echo Com_Helper_Script::getInstance();
+        ?>
+    </head>
+    <body>
+
+        <header class="main">
+            <div class="row">
+                <div id="logo" class="col-sm-3">
+                    <a href="">
+                        <img id="logoup" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/logo.png" alt="logo">
+
+                        <div class="clear-fix"></div>
+                        <img id="logodown" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/logo2.png" alt="logo">
+                    </a>
+                </div>
+                <div class="menutrigger">
+                    <img src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/burgermenu.png" alt=""/>
+                </div>
+
+                <div class="col-sm-9">
+                    <div class="organizadores">
+                        <p><?PHP echo $this->translator->organitationBy; ?>:</p>
+                        <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("IDF", $this->lan->LanId)->LinUrl; ?>" class="organizador"><img class="logo-idf" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/logo-idf.png" alt=""/></a>
+                        <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("SBD", $this->lan->LanId)->LinUrl; ?>" class="organizador"><img class="logo-sbd" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/logo-sdb.png" alt=""/></a>
+                        <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("ALAD", $this->lan->LanId)->LinUrl; ?>" class="organizador"><img class="logo-idf" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/logo-alad.png" alt=""/></a>
+                        <div id="lingua">
+                            <span class="lato-light"><?PHP echo $this->translator->languaje; ?></span>
+                            <?PHP foreach ($this->languages as $language) { ?>
+                                <a  href="<?PHP echo Com_Helper_Url::getInstance()->generateUrl($language->LanCode, ""); ?>">
+                                    <?PHP
+                                    $lenguaje = $language->LanId;
+                                    if ($lenguaje == 1) {
+                                        ?>
+                                        <img src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-spain.png" class="pull-right" alt="spain"/>
+                                    <?php } else { ?>
+                                        <img src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-brazil.png" class="pull-right" alt="brazil"/>
+                                    <?php } ?>
+
+
+                                </a>
+                            <?PHP } ?>
+                        </div>
+                    </div>
+                    <div class="clear-fix"></div>
+                    <div class="socialicons">
+
+                        <form id="form-search">
+                            <input type="text" class="lato-light" placeholder="" required>
+                            <input type="button" value=" ">
+                        </form>
+
+                        <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("Facebook", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-fb.png" alt=""/></a>
+                        <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("Twitter", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-tw.png" alt=""/></a>
+                        <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("gplus", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-gplus.png"alt=""/></a>
+                        <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("Linkedin", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-in.png" alt=""/></a>
+                    </div>
+                    <nav>
+                        <?PHP Menu_Widget_Menu::getInstance()->setLan($this->lan)->setParent(1)->render(); ?>
+                    </nav>
+
+                </div>
+
+            </div>
+        </header>
+        <div id="contenido">
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+                    <form role="form" id="contactForm">
+                        <div class="form-group itemFormContact">
+                            <h2 class="text-blue cocogose"><?PHP echo  Texts_Helper_Text::getInstance()->get($this->lan, 'Contacto')->TxtDescription; ?></h2>
+                        </div>
+
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group itemFormContact">
+                                    <input type="text" name="name" id="name" class="form-control input-lg" placeholder="Nombre" tabindex="1">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 col-md-6">
+                                <div class="form-group itemFormContact">
+                                    <input type="email" name="email" id="email" class="form-control input-lg" placeholder="Email" tabindex="2">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group itemFormContact">
+                            <textarea  name="message" id="message" class="form-control input-lg" tabindex="3" style="height: 150px">
+                            </textarea>
+                        </div>
+
+                        <hr class="colorgraph">
+                        <div class="row">
+                            <div class="form-group itemFormContact">
+                                <a onclick="saveContact()"  href="#" class="btn btn-primary btn-block btn-lg"><?PHP echo $this->translator->contactForm; ?></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            </br> </br> </br>
+        </div>
+        <div class="container-fluid footer-container  bg-gray">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-sm-4 ">
+                        <h2 class="lato-bold text-white">NOSOTROS</h2>
+
+                        <div class="text-white lato-light col-nosotros">
+                            <p><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'nostros')->TxtDescription; ?></p>
+
+                            <div class="socialicons text-white pull-left">
+                                <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("Facebook", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-fb.png"
+                                                                                                                                                                                 alt=""/></a>
+                                <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("Twitter", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-tw.png"
+                                                                                                                                                                                alt=""/></a>
+                                <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("gplus", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive"
+                                                                                                                                                                              src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-gplus.png"
+                                                                                                                                                                              alt=""/></a>
+                                <a target="_blank" href="<?php echo Links_Model_Links::getInstance()->getByName("Linkedin", $this->lan->LanId)->LinUrl; ?>" class="social "><img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getImage(); ?>/Public/icon-in.png"
+                                                                                                                                                                                 alt=""/></a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-sm-4 col-florianopolis">
+                        <h2 class="lato-bold text-white">FLORIANÓPOLIS</h2>
+
+                        <div class="text-white lato-light">
+                            <?PHP
+                            Menu_Widget_MenuFooter::getInstance()->setLan($this->lan)->setParent(14)->render();
+                            ?>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-contacto">
+                        <h2 class="lato-bold text-white">CONTACTO</h2>
+
+                        <div class="text-white lato-light">
+                            <?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'contatoFooter')->TxtDescription; ?>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+
+            </div>
+            <div class="row-fluid copyright text-center text-white bg-blue lato-bold"><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'copyright')->TxtDescription; ?></div>
+        </div>
+    </body>
+</html>

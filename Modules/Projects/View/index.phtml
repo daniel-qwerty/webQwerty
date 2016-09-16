@@ -1,0 +1,25 @@
+<?PHP
+
+$db = new Entities_Projects();
+$grid = new Com_Wizard_Grid();
+$grid->title = "Listado Projects";
+$grid->setIdField("ProId");
+$grid->setLanField("ProLanId");
+$grid->setQuery($db->getListWithLanguages());
+$grid->setAlias(array("LanName" => "Idioma", "ProTitle" => "Titulo", "ProSubTitle" => "SubTitulo", "BloUrl" => "Url", "ProStatus" => "Estado"));
+$grid->setFilters(array("ProTitle" => get('ProTitle')));
+
+$toolBar = new Com_Wizard_ToolBar();
+$toolBar->add("plus", "Nuevo", Com_Helper_Url::getInstance()->urlBase . '/Admin/Projects/Add');
+$toolBar->add("search", "Filtrar", null, "showHide('.filters')");
+$toolBar->add("log-out", "Volver", Com_Helper_Url::getInstance()->urlBase . '/Admin');
+$grid->setToolBar($toolBar);
+
+
+$grid->addAction("pencil", "Editar", Com_Helper_Url::getInstance()->urlBase . '/Admin/Projects/Edit/lan/_LANGUAGE_/id/_ID_');
+$grid->addAction("trash", "Eliminar", null, "confirm('Esta seguro de eliminar el registro?')?location.href='" . Com_Helper_Url::getInstance()->urlBase . '/Admin/Projects/Delete/id/_ID_' . "':'';");
+
+$grid->customField("ProStatus", array("value" => array('1' => 'Habilitado', '0' => 'Bloqueado')));
+
+
+$grid->render();
