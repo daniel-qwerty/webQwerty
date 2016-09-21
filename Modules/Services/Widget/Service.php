@@ -38,7 +38,26 @@ class Services_Widget_Service extends Com_Object {
                 <h2><?php echo $item->SerTitle; ?></h2>
             </div>
 
+            <?PHP
+        }
+    }
+
+    public function renderMenu() {
+
+        $list = Services_Model_Service::getInstance()->getServices($this->lan->LanId);
+        $actualUrl = Com_Helper_Url::getInstance()->urlBase . '/' . get("QUERY_STRING");
+        ?>
+
         <?PHP
+        foreach ($list as $item) {
+            ?>
+            <li id="<?php echo $item->SerAlias; ?>">
+                <img class="img-responsive" src="<?PHP echo Com_Helper_Url::getInstance()->getUploads(); ?>/Image/<?php echo $item->SerImage; ?>"
+                     alt="<?php echo $item->SerTitle; ?>"/>
+                <h2><?php echo $item->SerTitle; ?></h2>
+            </li>
+
+            <?PHP
         }
     }
 

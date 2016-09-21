@@ -21,8 +21,8 @@ define("FILE_PREFIX", "");
 define("DATABASE_SERVER", "localhost");
 define("DATABASE_PORT", "3306");
 define("DATABASE_NAME", "qwertybo_maldita");
-define("DATABASE_USERNAME", "qwertybo_maldita");
-define("DATABASE_PASSWORD", "maldita.123.");
+define("DATABASE_USERNAME", "root");
+define("DATABASE_PASSWORD", "");
 define("DATABASE_PREFIX", "");
 
 /**
