@@ -2303,7 +2303,8 @@ ul.qwerty-menu {
 }
 .seccion-work .port-item h5 {
     text-align: center;
-    font-family: seravek-medium-webfont, serif;
+    font-family: seravek-regular-webfont, serif;
+    color: #1A5A62;
     margin-top: 10px;
 }
 .seccion-work .port-item a,.seccion-work .port-item a:hover {
@@ -2319,7 +2320,7 @@ ul.qwerty-menu {
 .seccion-work .port-item .image img{
     position: absolute;
     border-radius: 50%;
-    border: solid 2px #FFFFFF;
+    /* border: solid 2px #FFFFFF; */
     /* max-width: 100%; */
     /* max-height: 100%; */
     /* top: 50%; */
