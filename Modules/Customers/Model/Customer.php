@@ -35,8 +35,8 @@ class Customers_Model_Customer extends Com_Module_Model {
 
     public function doUpdate($intId, Com_Object $obj, $logo) {
         $db = new Entities_Customers();
-        $db->BloId = $intId;
-        $db->BloLanId = $obj->Language;
+        $db->CusId = $intId;
+        $db->CusLanId = $obj->Language;
         $db->CusName = $obj->Name;
         $db->CusDescription = $obj->Description;
         $db->CusLink = $obj->Link;
@@ -69,6 +69,11 @@ class Customers_Model_Customer extends Com_Module_Model {
     public function getList() {
         $text = new Entities_Customers();
         return $text->getAll($text->getList());
+    }
+    public function getListClients($lanId) {
+        $db = new Entities_Customers();
+        return $db->getAll($db->getList()->where("CusLanId={$lanId}"));
+
     }
 
 }

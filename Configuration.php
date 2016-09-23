@@ -20,7 +20,7 @@ define("FILE_PREFIX", "");
  */
 define("DATABASE_SERVER", "localhost");
 define("DATABASE_PORT", "3306");
-define("DATABASE_NAME", "qwertybo_maldita");
+define("DATABASE_NAME", "qwerty_db");
 define("DATABASE_USERNAME", "root");
 define("DATABASE_PASSWORD", "");
 define("DATABASE_PREFIX", "");
