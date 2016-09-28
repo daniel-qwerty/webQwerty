@@ -2288,6 +2288,8 @@ ul.qwerty-menu {
     position: absolute;
     top:0;
     bottom: 0;
+    left: 0;
+    right: 0;
     padding: 20px 10px;
     overflow: auto;
 }
@@ -2306,6 +2308,7 @@ ul.qwerty-menu {
     font-family: seravek-regular-webfont, serif;
     color: #1A5A62;
     margin-top: 10px;
+    height: 30px;
 }
 .seccion-work .port-item a,.seccion-work .port-item a:hover {
     color: #1A5A62;
