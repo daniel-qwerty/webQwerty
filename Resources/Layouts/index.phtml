@@ -223,7 +223,7 @@
 </section>
 <div class="qwerty-header-container">
     <div class="qwerty-header qwerty-header-stack qwerty-header-work">
-        <h1 class="text-yellow"><i class="header-decoration"></i>Portafolio</h1>
+        <h1 class="text-yellow"><i class="header-decoration"></i><?PHP echo Texts_Helper_Text::getInstance()->get($this->lan, 'titlePortafolio')->TxtDescription; ?></h1>
     </div>
 </div>
 <section class="seccion seccion-work">
@@ -231,101 +231,11 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 col-xs-10 col-xs-offset-1">
-                    <div class="port-item">
-                        <a href="#">
-                            <div class="image">
-                                <img src="http://images.all-free-download.com/images/graphiclarge/cocacola_logo5_28563.jpg"
-                                     alt="cocacola">
-                            </div>
-                            <h5>Titulos</h5>
-                        </a>
-                    </div>
-                    <div class="port-item">
-                        <a href="#">
-                            <div class="image">
-                                <img
-                                    src="http://www.laguia.bo/sites/default/files/styles/logo_empresa_detalle/public/empresas/logos/isologo_con_fondo.jpg?itok=FhPjjIzY"
-                                    alt="cocacola">
-                            </div>
-                            <h5>Titulos</h5>
-                        </a>
-                    </div>
-                    <div class="port-item">
-                        <a href="#">
-                            <div class="image">
-                                <img src="https://i.ytimg.com/vi/5t_DLmYJ0TI/maxresdefault.jpg"
-                                     alt="cocacola">
-                            </div>
-                            <h5>Titulos</h5>
-                        </a>
-                    </div>
-                    <div class="port-item">
-                        <a href="#">
-                            <div class="image">
-                                <img src="http://wallpapercave.com/wp/NEGU81z.jpg"
-                                     alt="cocacola">
-                            </div>
-                            <h5>Titulos</h5>
-                        </a>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img src="http://images.all-free-download.com/images/graphiclarge/cocacola_logo5_28563.jpg"
-                                 alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img
-                                src="http://www.laguia.bo/sites/default/files/styles/logo_empresa_detalle/public/empresas/logos/isologo_con_fondo.jpg?itok=FhPjjIzY"
-                                alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img src="https://i.ytimg.com/vi/5t_DLmYJ0TI/maxresdefault.jpg"
-                                 alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img src="http://wallpapercave.com/wp/NEGU81z.jpg"
-                                 alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img src="http://images.all-free-download.com/images/graphiclarge/cocacola_logo5_28563.jpg"
-                                 alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img
-                                src="http://www.laguia.bo/sites/default/files/styles/logo_empresa_detalle/public/empresas/logos/isologo_con_fondo.jpg?itok=FhPjjIzY"
-                                alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img src="https://i.ytimg.com/vi/5t_DLmYJ0TI/maxresdefault.jpg"
-                                 alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
-                    <div class="port-item">
-                        <div class="image">
-                            <img src="http://wallpapercave.com/wp/NEGU81z.jpg"
-                                 alt="cocacola">
-                        </div>
-                        <h5>Titulos</h5>
-                    </div>
+
+
+                    <?PHP
+                    Customers_Widget_List::getInstance()->setLan($this->lan)->render();
+                    ?>
 
                 </div>
             </div>
@@ -389,12 +299,22 @@ Contact_Widget_Form::getInstance()->setLan($this->lan)->render(); ?>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 <img src="<?= Com_Helper_Url::getInstance()->getImage() . "/Public/corner-flag.png" ?>" style="    position: absolute;
     top: 0;
     right: 0;
     z-index: 9999;
     width: 160px;
     height: 160px;" alt="">
+=======
+
+<img src="<?= Com_Helper_Url::getInstance()->getImage() . "/Public/corner-flag.png" ?>" style=" position: absolute;
+top: 0;
+right: 0;
+z-index: 9999;
+width: 160px;
+height: 160px;" alt="">
+>>>>>>> 01d81b382ad3ba5c4dc7198d720f16b004149987
 </body>
 
 <?php echo Com_Helper_Script::getInstance(); //INsetarmos los Scripts ?>

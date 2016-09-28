@@ -72,7 +72,7 @@ class Team_Model_Team extends Com_Module_Model {
 
     public function getList($lanId) {
         $db = new Entities_Team();
-        return $db->getAll($db->getList()->where("TeamLanId={$lanId}"));
+        return $db->getAll($db->getList()->where("TeamLanId={$lanId}")->andWhere("TeamStatus='1'"));
         
     }
 
