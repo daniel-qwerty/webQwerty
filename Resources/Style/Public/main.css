@@ -2442,7 +2442,7 @@ ul.qwerty-menu {
     }
 
     .seccion-work .port-item{
-        width: 25%;
+        width: 50%;
     }
     
 
@@ -2453,7 +2453,7 @@ ul.qwerty-menu {
 @media (max-width: 480px) {
 
     .seccion-work .port-item{
-        width: 33%;
+        width: 50%;
         padding: 15px;
         color: #FFFFFF;
         float: left;
